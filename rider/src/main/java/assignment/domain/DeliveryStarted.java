@@ -1,10 +1,12 @@
 package assignment.domain;
 
+import assignment.domain.*;
 import assignment.infra.AbstractEvent;
-import lombok.Data;
 import java.util.*;
+import lombok.*;
 
 @Data
+@ToString
 public class DeliveryStarted extends AbstractEvent {
 
     private Long id;
@@ -14,4 +16,11 @@ public class DeliveryStarted extends AbstractEvent {
     private Integer price;
     private String customerAddress;
     private String shopAddress;
+
+    public DeliveryStarted(Delivery aggregate){
+        super(aggregate);
+    }
+    public DeliveryStarted(){
+        super();
+    }
 }

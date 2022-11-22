@@ -1,10 +1,11 @@
 package assignment.domain;
 
+import assignment.domain.*;
 import assignment.infra.AbstractEvent;
-import lombok.Data;
+import lombok.*;
 import java.util.*;
-
 @Data
+@ToString
 public class RejectOrder extends AbstractEvent {
 
     private Long id;
@@ -13,3 +14,5 @@ public class RejectOrder extends AbstractEvent {
     private Integer price;
     private String status;
 }
+
+

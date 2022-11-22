@@ -118,26 +118,6 @@ public class OrderStatusViewHandler {
             e.printStackTrace();
         }
     }
-    @StreamListener(KafkaProcessor.INPUT)
-    public void whenEndCooking_then_UPDATE_5(@Payload EndCooking endCooking) {
-        try {
-            if (!endCooking.validate()) return;
-                // view 객체 조회
-            Optional<OrderStatus> orderStatusOptional = orderStatusRepository.findById(endCooking.getId());
-
-            if( orderStatusOptional.isPresent()) {
-                 OrderStatus orderStatus = orderStatusOptional.get();
-            // view 객체에 이벤트의 eventDirectValue 를 set 함
-                orderStatus.setStatus("요리완료");    
-                // view 레파지 토리에 save
-                 orderStatusRepository.save(orderStatus);
-                }
-
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
     @StreamListener(KafkaProcessor.INPUT)
     public void whenRejectOrder_then_DELETE_1(@Payload RejectOrder rejectOrder) {
