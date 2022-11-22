@@ -36,24 +36,6 @@ public class OrderStatusViewHandler {
             e.printStackTrace();
         }
     }
-    @StreamListener(KafkaProcessor.INPUT)
-    public void whenRejectOrder_then_CREATE_2 (@Payload RejectOrder rejectOrder) {
-        try {
-
-            if (!rejectOrder.validate()) return;
-
-            // view 객체 생성
-            OrderStatus orderStatus = new OrderStatus();
-            // view 객체에 이벤트의 Value 를 set 함
-            orderStatus.setId(rejectOrder.getId());
-            orderStatus.setStatus("주문취소");
-            // view 레파지 토리에 save
-            orderStatusRepository.save(orderStatus);
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 
 
     @StreamListener(KafkaProcessor.INPUT)
@@ -97,11 +79,11 @@ public class OrderStatusViewHandler {
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
-    public void when_then_UPDATE_(@Payload  ) {
+    public void whenStartCooking_then_UPDATE_3(@Payload StartCooking startCooking) {
         try {
-            if (!.validate()) return;
+            if (!startCooking.validate()) return;
                 // view 객체 조회
-            Optional<OrderStatus> orderStatusOptional = orderStatusRepository.findById(.getId());
+            Optional<OrderStatus> orderStatusOptional = orderStatusRepository.findById(startCooking.getId());
 
             if( orderStatusOptional.isPresent()) {
                  OrderStatus orderStatus = orderStatusOptional.get();
@@ -116,6 +98,56 @@ public class OrderStatusViewHandler {
             e.printStackTrace();
         }
     }
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenEndCooking_then_UPDATE_4(@Payload EndCooking endCooking) {
+        try {
+            if (!endCooking.validate()) return;
+                // view 객체 조회
+            Optional<OrderStatus> orderStatusOptional = orderStatusRepository.findById(endCooking.getId());
 
+            if( orderStatusOptional.isPresent()) {
+                 OrderStatus orderStatus = orderStatusOptional.get();
+            // view 객체에 이벤트의 eventDirectValue 를 set 함
+                orderStatus.setStatus("요리완료");    
+                // view 레파지 토리에 save
+                 orderStatusRepository.save(orderStatus);
+                }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenEndCooking_then_UPDATE_5(@Payload EndCooking endCooking) {
+        try {
+            if (!endCooking.validate()) return;
+                // view 객체 조회
+            Optional<OrderStatus> orderStatusOptional = orderStatusRepository.findById(endCooking.getId());
+
+            if( orderStatusOptional.isPresent()) {
+                 OrderStatus orderStatus = orderStatusOptional.get();
+            // view 객체에 이벤트의 eventDirectValue 를 set 함
+                orderStatus.setStatus("요리완료");    
+                // view 레파지 토리에 save
+                 orderStatusRepository.save(orderStatus);
+                }
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    @StreamListener(KafkaProcessor.INPUT)
+    public void whenRejectOrder_then_DELETE_1(@Payload RejectOrder rejectOrder) {
+        try {
+            if (!rejectOrder.validate()) return;
+            // view 레파지 토리에 삭제 쿼리
+            orderStatusRepository.deleteById(rejectOrder.getId());
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }
 
