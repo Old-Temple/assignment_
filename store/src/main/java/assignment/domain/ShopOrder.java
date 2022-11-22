@@ -91,6 +91,69 @@ public class ShopOrder  {
 
 
 
+    public static void addOrder(Paid paid){
+
+        /** Example 1:  new item 
+        ShopOrder shopOrder = new ShopOrder();
+        repository().save(shopOrder);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(paid.get???()).ifPresent(shopOrder->{
+            
+            shopOrder // do something
+            repository().save(shopOrder);
+
+
+         });
+        */
+
+        
+    }
+    public static void deleteOrder(PayCancled payCancled){
+
+        /** Example 1:  new item 
+        ShopOrder shopOrder = new ShopOrder();
+        repository().save(shopOrder);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(payCancled.get???()).ifPresent(shopOrder->{
+            
+            shopOrder // do something
+            repository().save(shopOrder);
+
+
+         });
+        */
+
+        
+    }
+    public static void updateStatus(OrderConfirmed orderConfirmed){
+
+        /** Example 1:  new item 
+        ShopOrder shopOrder = new ShopOrder();
+        repository().save(shopOrder);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(orderConfirmed.get???()).ifPresent(shopOrder->{
+            
+            shopOrder // do something
+            repository().save(shopOrder);
+
+
+         });
+        */
+
+        
+    }
 
 
 }

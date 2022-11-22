@@ -2,9 +2,8 @@ package assignment.domain;
 
 import assignment.domain.*;
 import assignment.infra.AbstractEvent;
-import java.util.*;
 import lombok.*;
-
+import java.util.*;
 @Data
 @ToString
 public class OrderConfirmed extends AbstractEvent {
@@ -15,11 +14,6 @@ public class OrderConfirmed extends AbstractEvent {
     private String customerAddress;
     private Integer price;
     private Long shopId;
-
-    public OrderConfirmed(Order aggregate){
-        super(aggregate);
-    }
-    public OrderConfirmed(){
-        super();
-    }
 }
+
+

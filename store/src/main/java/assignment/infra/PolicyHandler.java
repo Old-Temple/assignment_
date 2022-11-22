@@ -33,6 +33,8 @@ public class PolicyHandler{
         
 
         // Sample Logic //
+        ShopOrder.addOrder(event);
+        
 
         
 
@@ -48,6 +50,8 @@ public class PolicyHandler{
         
 
         // Sample Logic //
+        ShopOrder.deleteOrder(event);
+        
 
         
 
@@ -63,6 +67,8 @@ public class PolicyHandler{
         
 
         // Sample Logic //
+        ShopOrder.updateStatus(event);
+        
 
         
 

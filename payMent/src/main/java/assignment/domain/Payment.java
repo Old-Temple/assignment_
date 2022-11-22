@@ -76,6 +76,27 @@ public class Payment  {
 
 
 
+    public static void acceptPay(Ordered ordered){
+
+        /** Example 1:  new item 
+        Payment payment = new Payment();
+        repository().save(payment);
+
+        */
+
+        /** Example 2:  finding and process
+        
+        repository().findById(ordered.get???()).ifPresent(payment->{
+            
+            payment // do something
+            repository().save(payment);
+
+
+         });
+        */
+
+        
+    }
     public static void rejectPay(OrderCancled orderCancled){
 
         /** Example 1:  new item 
