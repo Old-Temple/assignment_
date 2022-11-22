@@ -1,6 +1,5 @@
 package assignment.domain;
 
-import assignment.domain.Ordered;
 import assignment.domain.OrderCancled;
 import assignment.domain.OrderChecked;
 import assignment.domain.OrderConfirmed;
@@ -66,11 +65,6 @@ public class Order  {
     public void onPostPersist(){
 
 
-        Ordered ordered = new Ordered(this);
-        ordered.publishAfterCommit();
-
-
-
         OrderCancled orderCancled = new OrderCancled(this);
         orderCancled.publishAfterCommit();
 
@@ -94,6 +88,9 @@ public class Order  {
 
 
     public void order(){
+        Ordered ordered = new Ordered(this);
+        ordered.publishAfterCommit();
+
     }
 
     public static void updateStatus(AcceptOrder acceptOrder){
