@@ -26,11 +26,11 @@ public class PolicyHandler{
     @Autowired
     assignment.external.OrderService orderService;
 
-    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='Cooking'")
-    public void wheneverCooking_AddDeliveryList(@Payload Cooking cooking){
+    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='EndCooking'")
+    public void wheneverEndCooking_AddDeliveryList(@Payload EndCooking endCooking){
 
-        Cooking event = cooking;
-        System.out.println("\n\n##### listener AddDeliveryList : " + cooking + "\n\n");
+        EndCooking event = endCooking;
+        System.out.println("\n\n##### listener AddDeliveryList : " + endCooking + "\n\n");
 
         // REST Request Sample
         

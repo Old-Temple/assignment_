@@ -97,11 +97,11 @@ public class OrderStatusViewHandler {
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
-    public void whenCooking_then_UPDATE_3(@Payload Cooking cooking) {
+    public void when_then_UPDATE_(@Payload  ) {
         try {
-            if (!cooking.validate()) return;
+            if (!.validate()) return;
                 // view 객체 조회
-            Optional<OrderStatus> orderStatusOptional = orderStatusRepository.findById(cooking.getId());
+            Optional<OrderStatus> orderStatusOptional = orderStatusRepository.findById(.getId());
 
             if( orderStatusOptional.isPresent()) {
                  OrderStatus orderStatus = orderStatusOptional.get();

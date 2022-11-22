@@ -39,6 +39,10 @@ logging:
     org.hibernate.type: trace
     org.springframework.cloud: debug
 
+api:
+  url:
+    rider: rider:8085
+
 
 server:
   port: 8083
@@ -68,5 +72,9 @@ spring:
         event-out:
           destination: assignment
           contentType: application/json
+
+api:
+  url:
+    rider: rider:8080
 
 

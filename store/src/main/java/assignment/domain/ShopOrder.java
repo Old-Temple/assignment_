@@ -1,8 +1,9 @@
 package assignment.domain;
 
 import assignment.domain.AcceptOrder;
-import assignment.domain.Cooking;
 import assignment.domain.RejectOrder;
+import assignment.domain.StartCooking;
+import assignment.domain.EndCooking;
 import assignment.StoreApplication;
 import javax.persistence.*;
 import java.util.List;
@@ -58,13 +59,27 @@ public class ShopOrder  {
 
 
 
-        Cooking cooking = new Cooking(this);
-        cooking.publishAfterCommit();
-
-
-
         RejectOrder rejectOrder = new RejectOrder(this);
         rejectOrder.publishAfterCommit();
+
+
+
+        StartCooking startCooking = new StartCooking(this);
+        startCooking.publishAfterCommit();
+
+
+        //Following code causes dependency to external APIs
+        // it is NOT A GOOD PRACTICE. instead, Event-Policy mapping is recommended.
+
+
+        assignment.external.Delivery delivery = new assignment.external.Delivery();
+        // mappings goes here
+        StoreApplication.applicationContext.getBean(assignment.external.DeliveryService.class)
+            .accept(delivery);
+
+
+        EndCooking endCooking = new EndCooking(this);
+        endCooking.publishAfterCommit();
 
     }
 

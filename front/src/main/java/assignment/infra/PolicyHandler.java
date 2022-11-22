@@ -51,20 +51,6 @@ public class PolicyHandler{
         
 
     }
-    @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='Cooking'")
-    public void wheneverCooking_UpdateStatus(@Payload Cooking cooking){
-
-        Cooking event = cooking;
-        System.out.println("\n\n##### listener UpdateStatus : " + cooking + "\n\n");
-
-
-        
-
-        // Sample Logic //
-
-        
-
-    }
     @StreamListener(value=KafkaProcessor.INPUT, condition="headers['type']=='DeliveryStarted'")
     public void wheneverDeliveryStarted_UpdateStatus(@Payload DeliveryStarted deliveryStarted){
 

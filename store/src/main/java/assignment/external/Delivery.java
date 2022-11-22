@@ -1,11 +1,9 @@
-package assignment.domain;
+package assignment.external;
 
-import assignment.infra.AbstractEvent;
 import lombok.Data;
-import java.util.*;
-
+import java.util.Date;
 @Data
-public class DeliveryStarted extends AbstractEvent {
+public class Delivery {
 
     private Long id;
     private Long menuId;
@@ -15,3 +13,5 @@ public class DeliveryStarted extends AbstractEvent {
     private String customerAddress;
     private String shopAddress;
 }
+
+
